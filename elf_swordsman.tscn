@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://cu0ct1yhe4hk0"]
+
+[ext_resource type="Script" path="res://elf_swordsman.gd" id="1_jqehc"]
+[ext_resource type="Texture2D" uid="uid://bj8men1tceyxl" path="res://bfa4b5bb-3314-48b1-a29c-012334805feb.png" id="2_k62ip"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wxhoo"]
+radius = 143.056
+
+[node name="ElfSwordsman" type="CharacterBody2D"]
+script = ExtResource("1_jqehc")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-3.8147e-06, -3.8147e-06)
+scale = Vector2(0.327271, 0.327271)
+texture = ExtResource("2_k62ip")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_wxhoo")

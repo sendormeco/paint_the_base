@@ -1,0 +1,24 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="Paint The Base"
+run/main_scene="res://battle_scene.tscn"
+config/features=PackedStringArray("4.3", "Mobile")
+config/icon="res://Convert to PNG project (1).png"
+
+[autoload]
+
+SelectionController="*res://selection_controller.gd"
+
+[rendering]
+
+renderer/rendering_method="mobile"

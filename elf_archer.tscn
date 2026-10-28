@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://bs2sklc2pbkva"]
+
+[ext_resource type="Script" path="res://elf_archer.gd" id="1_xfdpb"]
+[ext_resource type="Texture2D" uid="uid://buh8m2oddo7n8" path="res://bea8b983-8b43-481f-90a9-4db60129f694.png" id="2_he36t"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sankt"]
+radius = 141.227
+
+[node name="Node2D" type="CharacterBody2D"]
+script = ExtResource("1_xfdpb")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 5.96046e-08)
+scale = Vector2(0.310547, 0.310547)
+texture = ExtResource("2_he36t")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_sankt")

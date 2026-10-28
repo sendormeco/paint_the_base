@@ -1,0 +1,61 @@
+[gd_scene load_steps=14 format=3 uid="uid://b6ljndnvg54hd"]
+
+[ext_resource type="Script" path="res://battle_scene.gd" id="1_e3fk6"]
+[ext_resource type="Script" path="res://camera_2d.gd" id="1_yno1l"]
+[ext_resource type="Shader" path="res://battle_scene.gdshader" id="2_ihjwy"]
+[ext_resource type="Script" path="res://shader_overlay.gd" id="3_tec6h"]
+[ext_resource type="Script" path="res://paint_canvas.gd" id="5_6t24e"]
+[ext_resource type="PackedScene" uid="uid://c3yxxvvhfpp1y" path="res://paint_controller.tscn" id="5_dq65g"]
+[ext_resource type="PackedScene" uid="uid://cu0ct1yhe4hk0" path="res://elf_swordsman.tscn" id="6_hcmq3"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_3eer2"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_23tl5"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_sagv5"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5f3pu"]
+shader = ExtResource("2_ihjwy")
+shader_parameter/paint_color = Color(1, 1, 1, 0.8)
+shader_parameter/hardness = 0.5
+shader_parameter/base_texture = SubResource("CanvasTexture_23tl5")
+shader_parameter/mask_texture = SubResource("CanvasTexture_sagv5")
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_qrf36"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_uaa4q"]
+
+[node name="BattleScene" type="Node2D"]
+script = ExtResource("1_e3fk6")
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Map" type="Sprite2D" parent="."]
+modulate = Color(0.331367, 0.580629, 0.197599, 1)
+position = Vector2(54.8174, -161.692)
+scale = Vector2(-5288.56, 2987.38)
+texture = SubResource("CanvasTexture_3eer2")
+
+[node name="ShaderOverlay" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_5f3pu")
+position = Vector2(65.5, -155)
+scale = Vector2(5321, 2992)
+texture = SubResource("CanvasTexture_qrf36")
+script = ExtResource("3_tec6h")
+
+[node name="MainCamera" type="Camera2D" parent="."]
+zoom = Vector2(0.25, 0.25)
+script = ExtResource("1_yno1l")
+
+[node name="PaintController" parent="." instance=ExtResource("5_dq65g")]
+brush_texture = SubResource("CanvasTexture_uaa4q")
+
+[node name="SubViewport" type="SubViewport" parent="PaintController"]
+transparent_bg = true
+size = Vector2i(1024, 1024)
+
+[node name="PaintCanvas" type="Node2D" parent="PaintController/SubViewport"]
+script = ExtResource("5_6t24e")
+
+[node name="ElfSwordsman" parent="." instance=ExtResource("6_hcmq3")]
+position = Vector2(-186, 336)
